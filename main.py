@@ -1,6 +1,5 @@
-<<<<<<< HEAD
-import fastapi
-=======
+
+
 from fastapi import FastAPI
 from parameters import router as parameters_router
 
@@ -14,4 +13,3 @@ def hello():
 @app.post("/goodbye")
 def goodbye():
     return {"message": "Goodbye, World!"}
->>>>>>> 3c146f662939f0b2b8e5d0be644979299e8811b3
