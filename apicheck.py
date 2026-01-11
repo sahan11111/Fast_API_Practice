@@ -1,13 +1,17 @@
 import requests
 api_url = "http://127.0.0.1:8000/signup"
 
-data={
-    "username":"sahan_tak",
-    "email":"sahan@gmail.com",
-    "age":22
-}
+# data={
+#     "username":"sahan",
+#     "email":"sahan@gmail.com",
+#     "age":22
+# }
 
-response=requests.post(api_url,json=data)
+data={
+    "username":"sahan",
+    "password":"mypassword"
+}
+response=requests.post(api_url,json=data) #using json to send data in json format
 
 
 print(response.status_code)
