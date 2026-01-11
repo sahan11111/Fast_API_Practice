@@ -34,3 +34,38 @@ async def user_login(username = Query(...),password=Query(...)): #using Query to
     
 
 
+'''Request Object example to access request data directly'''
+@app.get("/info")
+async def user_info(request: Request): #using Request object to access request data directly and its data stored in request body
+    client_host=(request.client.host) #getting client host info
+    url=(request.url)#getting url of the request
+    method=(request.method)#getting method of the request
+    headers=(request.headers)#getting headers of the request
+    
+    ''' you can access any request data using request object'''
+    return {"message": "User info received", "url": url, "method": method, "client_host": client_host, "header_agent":{headers["user-agent"]},}#"headers": headers 
+
+
+
+''' request body example using Request Object'''
+@app.post("/data")
+async def user_data(request: Request):
+    data = await request.json() #accessing request body data directly using request object and converting it to json format
+    return {"message": "Data received", "data": data}
+
+
+
+''' query parameters example using Request Object'''
+@app.get("/query")
+async def user_query(request: Request):
+    query_params = request.query_params #accessing query parameters directly using request object
+    
+    return {"message": "Query parameters received", "query_params": query_params}
+
+
+''' request body example using Request Object and accessing raw body data'''
+@app.get("/details2")
+async def user_signup2(request: Request):
+    body=await request.body() #accessing request body data directly using request object
+    
+    return {"message": "Data received", "data": body}
