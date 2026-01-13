@@ -36,7 +36,7 @@ async def dashboard(credentials: HTTPAuthorizationCredentials = Depends(security
     """
     token=credentials.credentials
     
-    if verify_token(token) == Falsel:
+    if verify_token(token) == False:
         return "return invalid token"
     
     return "welcome to dashboard"
